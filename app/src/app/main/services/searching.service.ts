@@ -18,7 +18,7 @@ export class SearchingService {
     this.workOrders = [];
   }
 
-  async getInitialData(): Promise<void> {
+  getInitialData(): void {
     this.http
       .get<WorkOrdersResponse>(ORDERS_URL)
       .subscribe((res: WorkOrdersResponse) => {
