@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { WorkOrdersResponse } from '../models/response.model';
 import { WorkOrder } from '../models/work-order.model';
 
-const ORDERS_URL = '../../../assets/data/data.json';
+const ORDERS_URL = '/task78-solution/app/dist/app/assets/data/data.json';
 
 @Injectable({
   providedIn: 'root',
