@@ -5,13 +5,15 @@ import { MainRoutingModule } from './main-routing.module';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { HeaderComponent } from './components/header/header.component';
 import { WorkOrdersComponent } from './components/work-orders/work-orders.component';
+import { WorkOrderComponent } from './components/work-orders/work-order/work-order.component';
 
 
 @NgModule({
   declarations: [
     WelcomeComponent,
     HeaderComponent,
-    WorkOrdersComponent
+    WorkOrdersComponent,
+    WorkOrderComponent
   ],
   imports: [
     CommonModule,
