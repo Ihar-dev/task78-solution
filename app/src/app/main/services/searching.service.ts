@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { WorkOrdersResponse } from '../models/response.model';
 import { WorkOrder } from '../models/work-order.model';
@@ -13,18 +14,18 @@ export class SearchingService {
   workOrders$ = new Subject<WorkOrder[]>();
   workOrders: WorkOrder[];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.workOrders = [];
   }
 
   async getInitialData(): Promise<void> {
-    try {
-      const res = await fetch(ORDERS_URL);
-      const data: WorkOrdersResponse = await res.json();
-      const workOrders = data.response.data;
-      this.workOrders$.next(workOrders);
-      this.workOrders = workOrders;
-    } catch (err) {}
+    this.http
+      .get<WorkOrdersResponse>(ORDERS_URL)
+      .subscribe((res: WorkOrdersResponse) => {
+        const workOrders = res.response.data;
+        this.workOrders$.next(workOrders);
+        this.workOrders = workOrders;
+      });
   }
 
   search(dataForSearch: string): void {
